@@ -26,4 +26,9 @@ $(function () {
   });
   //appending eleemnt to list
   copyPanel.insertBefore(copyReverseElement, copyPanel.firstChild);
+
+  //Eventlistener to call our methode on click
+  document
+    .getElementsByTagName("canvas")[0]
+    .addEventListener("click", () => console.log("call method initializer"));
 });
