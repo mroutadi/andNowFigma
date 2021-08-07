@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "andNowFigma",
+  "short_name": "&nowFigma",
+  "description": "a chrome extention to make Figma.com easy to use :)",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*.figma.com/*",
+        "https://*.figma.com/*"
+      ],
+      "js": [
+        "extention.js"
+      ]
+    }
+  ]
+}
