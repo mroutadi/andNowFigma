@@ -2,12 +2,13 @@
 corrector = (text) => {
   var english = /^[A-Za-z0-9]*$/; //Regexp
   var words = text.split(" ");
+  var reversed = [];
   words.forEach((word) => {
     if (english.test(word)) {
-      word.split("").reverse().join("");
-    }
+      reversed.push(word.split("").reverse().join(""));
+    } else reversed.push(word);
   });
-  return words.join(" ");
+  return reversed.join(" ");
 };
 //Reverser
 reverser = (text) => {
@@ -76,6 +77,7 @@ function init() {
     copyReverseElement.classList.add(copyButton.classList[1]);
 
     //Init Bell container
+    // cause we have no bell container, we should make a fake copy and then work with bell
     navigator.clipboard.readText().then((clipText) => {
       var initBellText = clipText;
       copyButton.click();
@@ -85,7 +87,8 @@ function init() {
             'div[class^="visual_bell--messageContainer--"]'
           );
           if (bellMessage) {
-            bellMessage.style.opacity = 0;
+            bellMessage.style.display = "none";
+            window.setTimeout(() => (bellMessage.style.display = "flex"), 3000);
           }
         },
         () => {}
@@ -110,7 +113,7 @@ function init() {
       copyButton.click();
       copyToClipboard(reversedText).then(
         () => {
-          bellMessage.innerHTML = "reverse Copied successfully";
+          bellMessage.innerHTML = "reverse Copied to clipboard";
         },
         () => {
           bellMessage.innerHTML = "problem in Copy";
