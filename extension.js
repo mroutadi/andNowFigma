@@ -1,6 +1,6 @@
 //English corrector
 corrector = (text) => {
-  var english = /^[A-Za-z0-9]*$/; //Regexp
+  var english = /^[A-Za-z0-9۰۱۲۳۴۵۶۷۸۹]*$/; //Regexp
   var words = text.split(" ");
   var reversed = [];
   words.forEach((word) => {
